@@ -90,6 +90,24 @@ class CaesarCipher(tk.Frame):
         
         self.key_entry.grid(column=1, row=1, padx=20, ipadx=6,ipady=10)
         
+        
+        self.button_encrypt = tk.Button(
+            self.main_frame,
+            bg=self.color2,
+            fg=self.color1,
+            activebackground=self.color3,
+            activeforeground=self.color1,
+            font=('Calibri', 15),
+            text='Encrypt',
+            width=6,
+            height=1,
+            cursor='hand1',
+            highlightthickness=0,
+            border=0,
+        )
+
+        self.button_encrypt.grid(column=0, row=2, pady=20, ipadx=15, ipady=5)
+        
 
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
