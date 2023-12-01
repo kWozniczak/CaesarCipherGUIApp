@@ -30,7 +30,7 @@ class CaesarCipher(tk.Frame):
         self.title.grid(column=0, row=0, sticky=tk.EW, pady=20)
 
         self.row1_container = tk.Frame(self.main_frame, bg=self.color1)
-        self.row1_container.columnconfigure(0, weight=1)
+        self.row1_container.columnconfigure(0, weight=6)
         self.row1_container.columnconfigure(1, weight=0)
         self.row1_container.grid(column=0, row=1, sticky=tk.NSEW, padx=70)
         
@@ -63,6 +63,33 @@ class CaesarCipher(tk.Frame):
         self.plaintext_text_widget.grid(column=0, row=1)
 
 
+        self.key_label = tk.Label(
+            self.row1_container,
+            bg=self.color1,
+            fg=self.color2,
+            font=('Calibri', 16),
+            text=f'Key (1-{self.num_letters - 1})',
+            justify=tk.CENTER
+            )
+        
+        self.key_label.grid(column=1, row=1, sticky=tk.N, padx=20)
+        
+
+        self.key_entry = tk.Entry(
+            self.row1_container,
+            bg=self.color2,
+            fg=self.color3,
+            selectbackground=self.color1,
+            selectforeground=self.color2,
+            font=('Calibri', 15),
+            width=6,
+            highlightthickness=0,
+            border=0,
+            justify=tk.CENTER,
+            )
+        
+        self.key_entry.grid(column=1, row=1, padx=20, ipadx=6,ipady=10)
+        
 
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
