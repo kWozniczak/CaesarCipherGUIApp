@@ -7,6 +7,9 @@ class CaesarCipher(tk.Frame):
         self.color2 = "#FEF7FF"
         self.color3 = "#807483"
 
+        self.letters = 'a¹bcædeêfghijkl³mnñoópqrsœtuvwxyzŸ¿'
+        self.num_letters = len(self.letters)
+        
         super().__init__(root, bg=self.color1)
         
         self.main_frame = self
