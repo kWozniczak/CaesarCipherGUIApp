@@ -1,4 +1,4 @@
-import tkinter as tk
+ï»¿import tkinter as tk
 import sys
 
 class CaesarCipher(tk.Frame):
@@ -7,7 +7,7 @@ class CaesarCipher(tk.Frame):
         self.color2 = "#FEF7FF"
         self.color3 = "#807483"
 
-        self.letters = 'a¹bcædeêfghijkl³mnñoópqrsœtuvwxyzŸ¿'
+        self.letters = 'aÄ…bcÄ‡deÄ™fghijklÅ‚mnÅ„oÃ³pqrsÅ›tuvwxyzÅºÅ¼'
         self.num_letters = len(self.letters)
         
         super().__init__(root, bg=self.color1)
@@ -15,7 +15,20 @@ class CaesarCipher(tk.Frame):
         self.main_frame = self
         self.main_frame.pack(fill=tk.BOTH, expand=True)
         self.main_frame.columnconfigure(0, weight=1)
+        self.render_widgets()
         
+
+    def render_widgets(self):  
+        self.title = tk.Label(
+        self.main_frame,
+        bg=self.color1,
+        fg=self.color2,
+        font=('MS Sans Serif', 22, 'bold'),
+        text='Caesar Cipher'
+        )
+        
+        self.title.grid(column=0, row=0, sticky=tk.EW, pady=20)
+
 
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
