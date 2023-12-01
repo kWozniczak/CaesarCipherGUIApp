@@ -108,10 +108,37 @@ class CaesarCipher(tk.Frame):
 
         self.button_encrypt.grid(column=0, row=2, pady=20, ipadx=15, ipady=5)
         
+        self.encrypted_text_title = tk.Label(
+            self.main_frame,
+            bg=self.color1,
+            fg=self.color2,
+            font=('Calibri', 14),
+            text='Encrypted text',
+            justify=tk.CENTER
+            )
+        
+        self.encrypted_text_title.grid(column=0, row=3, sticky=tk.W, padx=70)
+     
+
+        self.encrypted_text_label = tk.Label(
+            self.main_frame,
+            anchor=tk.NW,
+            bg=self.color2,
+            fg=self.color3,
+            font=('Calibri', 15),
+            height=4,
+            width=65,
+            padx=10,
+            pady=10,
+            justify=tk.LEFT
+            )
+        
+        self.encrypted_text_label.grid(column=0, row=4)
+        
 
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
 root.title("Caesar Cipher")
-root.geometry('800x500')
+root.geometry('800x720')
 root.resizable(width=False, height=False)
 root.mainloop()
