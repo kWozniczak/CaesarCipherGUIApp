@@ -74,7 +74,8 @@ class CaesarCipher(tk.Frame):
         
         self.key_label.grid(column=1, row=1, sticky=tk.N, padx=20)
         
-
+        self.key_entry_validation_command = self.row1_container.register(self.key_entry_validation)
+        
         self.key_entry = tk.Entry(
             self.row1_container,
             bg=self.color2,
@@ -86,6 +87,8 @@ class CaesarCipher(tk.Frame):
             highlightthickness=0,
             border=0,
             justify=tk.CENTER,
+            validate='key',
+            validatecommand=(self.key_entry_validation_command, '%P')
             )
         
         self.key_entry.grid(column=1, row=1, padx=20, ipadx=6,ipady=10)
@@ -104,6 +107,7 @@ class CaesarCipher(tk.Frame):
             cursor='hand1',
             highlightthickness=0,
             border=0,
+            state=tk.DISABLED,
             command=lambda: [self.encrypt_text(), self.display_in_encrypted_text_label()]
             
         )
@@ -151,6 +155,7 @@ class CaesarCipher(tk.Frame):
             cursor='hand1',
             highlightthickness=0,
             border=0,
+            state=tk.DISABLED,
             command=lambda: [self.decrypt_text(), self.display_in_decrypted_text_label()]
         )
 
@@ -239,6 +244,26 @@ class CaesarCipher(tk.Frame):
         my_text = ''
         my_text = self.decrypted_text_label.config(text=self.decrypt_text())
 
+
+    def key_entry_validation(self, value):
+        if value == '':
+            self.button_encrypt['state'] = tk.DISABLED
+            self.button_decrypt['state'] = tk.DISABLED
+            return True
+        
+        try:
+            value = int(value)
+        except ValueError:
+            return False
+        
+        if value <= 0 or value >= self.num_letters:
+            return False
+        
+        self.button_encrypt['state'] = tk.NORMAL
+        self.button_decrypt['state'] = tk.NORMAL
+        
+        return True
+    
 
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
