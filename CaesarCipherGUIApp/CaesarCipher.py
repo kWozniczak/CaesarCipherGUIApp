@@ -151,6 +151,7 @@ class CaesarCipher(tk.Frame):
             cursor='hand1',
             highlightthickness=0,
             border=0,
+            command=lambda: [self.decrypt_text(), self.display_in_decrypted_text_label()]
         )
 
         self.button_decrypt.grid(column=0, row=5, pady=20, ipadx=15, ipady=5)
@@ -209,6 +210,34 @@ class CaesarCipher(tk.Frame):
     def display_in_encrypted_text_label(self):
         my_text = ''
         my_text = self.encrypted_text_label.config(text=self.encrypt_text())
+
+
+    def decrypt_text(self):
+        ciphertext = self.encrypted_text_label.cget('text')
+        result = ''
+        alpha= self.letters
+        key = self.key_entry.get()
+        
+        for c in ciphertext:
+            if c.isupper():
+                alphabet = alpha.upper()
+            elif c.islower():
+                alphabet = alpha.lower()
+            else:
+                result += c
+                continue
+        
+            position = alphabet.find(c)
+            shifted_position = (position - int(key)) % len(alpha)
+            encrypted_text_letter = alphabet[shifted_position]
+            result += encrypted_text_letter
+            
+        return result
+
+
+    def display_in_decrypted_text_label(self):
+        my_text = ''
+        my_text = self.decrypted_text_label.config(text=self.decrypt_text())
 
 
 root = tk.Tk()
