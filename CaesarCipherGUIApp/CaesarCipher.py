@@ -136,6 +136,24 @@ class CaesarCipher(tk.Frame):
         self.encrypted_text_label.grid(column=0, row=4)
         
 
+        self.button_decrypt = tk.Button(
+            self.main_frame,
+            bg=self.color2,
+            fg=self.color1,
+            activebackground=self.color3,
+            activeforeground=self.color1,
+            font=('Calibri', 15),
+            text='Decrypt',
+            width=6,
+            height=1,
+            cursor='hand1',
+            highlightthickness=0,
+            border=0,
+        )
+
+        self.button_decrypt.grid(column=0, row=5, pady=20, ipadx=15, ipady=5)
+
+
 root = tk.Tk()
 caesar_cipher_app = CaesarCipher(root)
 root.title("Caesar Cipher")
